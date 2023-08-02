@@ -1,0 +1,6 @@
+'XXXXXXXXX'
+'X..X..X..X..'
+'..X..X..X..X'
+'............X'
+'.....................................................................XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+'X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..X..'

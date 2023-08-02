@@ -1,0 +1,30 @@
+탐욕 알고리즘 (Greedy Algorithm)
+
+통에서 가장 작은 값에서 왼쪽 자르고
+가장 큰 값에서 오른 쪽 자르겨
+남은 통에서 계속 반복하면 최대의 조각 갯수가 나오는 알고리즘
+
+
+
+function solution(A) {
+    let count = 0;
+    let arr = A;
+    while(true) {
+        arr = arr.slice(findIndexOfLeast(arr) + 1);
+        count++;
+        if(!arr.length) break;
+    }
+    return count;
+}
+
+function findIndexOfLeast(arr) {
+    let indexOfLeast = 0;
+    let least = arr[0];
+    for(let i = 1, l = arr.length; i < l; i++) {
+        if(arr[i] < least) {
+            least = arr[i];
+            indexOfLeast = i;
+        }
+    }
+    return indexOfLeast;
+}
