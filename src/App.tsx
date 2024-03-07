@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Router from '@/router';
 import '@/styles/App.css';
 
-const App: React.FC = () => {
+const App = () => {
   useEffect(() => {
     console.log('%c DEVNOLOGY', 'color: green;  font-size: 100px; font-weight: 900;');
     console.log(

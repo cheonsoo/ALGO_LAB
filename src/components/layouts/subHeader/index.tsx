@@ -46,8 +46,8 @@ const StyledUl = styled.ul`
 
 const menus = [
   { path: '/', label: 'devnology' },
-  { path: '/posts', label: 'posts' },
-  { path: '/apps', label: 'apps' },
+  // { path: '/posts', label: 'posts' },
+  // { path: '/apps', label: 'apps' },
   // { path: '/experiments', label: 'experiments' },
   { path: '/about', label: 'about' }
   // { path: '/zoomimagescroll', label: 'zoomimagescroll' },

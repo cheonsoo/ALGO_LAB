@@ -10,6 +10,7 @@ const initialState: InitialState = {
 };
 
 type Action = ReturnType<typeof getApps>;
+
 const appsReducer = (prevState = initialState, action: Action) => {
   switch (action.type) {
     case TYPE_GET_APPS:

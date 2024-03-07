@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`
-  height: 50px;
+  height: 60px;
   background-color: rgba(0,0,0,0.8);
   display: flex;
   align-items: center;

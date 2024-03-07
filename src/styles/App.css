@@ -36,3 +36,8 @@ body {
 
   color: #000000;
 }
+
+.app {
+  max-width: 1000px;
+  margin: 0 auto;
+}

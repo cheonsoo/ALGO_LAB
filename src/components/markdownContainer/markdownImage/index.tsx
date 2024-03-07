@@ -42,7 +42,7 @@ export default function MarkdownImage(props: any) {
 
   return (
     <StyledImageContainer>
-      <StyledImage width={width} height={height} alt={alt} src={props.src} />
+      <StyledImage width={width} height={height} alt={alt} loading="lazy" src={props.src} />
     </StyledImageContainer>
   );
 }

@@ -9,7 +9,7 @@ const Posts = React.lazy(() => import('@/pages/posts'));
 const Post = React.lazy(() => import('@/pages/posts/post'));
 const About = React.lazy(() => import('@/pages/about'));
 
-const AppRoutes: React.FC = () => {
+const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Dashboard />} />

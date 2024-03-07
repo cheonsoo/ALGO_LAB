@@ -98,9 +98,7 @@ const VisualizedArrayCompare: React.FC = () => {
 
   function handleChange(evt: any) {
     const selected = evt.target.value;
-    console.log(selected);
 
-    console.log(arrayCompare);
     if (arrayCompare) {
       let value = evt.target.value;
       if (value === 'all') {

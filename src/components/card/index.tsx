@@ -43,7 +43,7 @@ export default function RecipeReviewCard(props: PostProps) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345, margin: "10px" }}>
+    <Card sx={{ width: '100%', margin: "10px" }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">

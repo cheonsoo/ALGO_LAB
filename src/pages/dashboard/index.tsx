@@ -1,49 +1,46 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { isEmpty } from 'lodash';
 
-import { styled } from '@mui/material/styles';
-
-import { getApps } from '@/modules/apps/action';
+import { getApps, getAllConfigs } from '@/modules/apps/action';
+import { getPosts } from '@/modules/posts/action';
 import { RootState } from '@/modules';
-import { TypeApps } from '@/types';
+import { IApp, IPost } from '@/types';
 
-import Card from "@/components/organisms/cardSimple";
-interface PostProps {
-  desc: string;
-}
+import Card from '@/components/organisms/cardSimple';
 
-const Dashboard: React.FC = () => {
-  const apps: TypeApps = useSelector((state: RootState) => state.apps.list);
-
-  const navigate = useNavigate();
+const Dashboard = () => {
+  const apps: IApp[] = useSelector((state: RootState) => state.apps.list);
+  // const posts: IPost[] = useSelector((state: RootState) => state.posts.list);
 
   const dispatch = useDispatch();
   const getAppsData = useCallback(() => dispatch(getApps()), [dispatch]);
+  // const getPostsData = useCallback(() => dispatch(getPosts()), [dispatch]);
 
   useEffect(() => {
-    getAppsData();
+    if (isEmpty(apps)) {
+      getAppsData();
+    }
   }, []);
 
-  const handleClickItem = (id: string) => {
-    navigate(`/app/${id}`);
-  };
-
   return (
-    <div className="home_container">
+    <div className="home_container" style={{ width: '100%', backgroundColor: 'rgba(0,0,0,0.7)' }}>
       <div>
-        <div style={{ display: "flex", flexDirection: "row", overflow: "hidden", flexWrap: "wrap" }}>
+        <div style={{ display: 'flex', flexDirection: 'row', overflow: 'hidden', flexWrap: 'wrap' }}>
           {apps
-          .filter((app) => app.publish)
-          .map((app:any, idx: number) => (
-            <Card title={app.title} desc={app.desc} thumbnail={app.thumbnail} created={app.created} />
-            // <SLi key={app} onClick={() => handleClickItem(app.id)}>
-            //   <div>
-            //     <div>{app.title}</div>
-            //     <div>{app.desc}</div>
-            //   </div>
-            // </SLi>
-          ))}
+            .filter((app: IApp) => app.publish === true)
+            .map((app: IApp) => (
+              <Card
+                key={app.id}
+                type={app.type}
+                id={app.id}
+                title={app.title}
+                desc={app.desc}
+                thumbnail={app.thumbnail}
+                created={app.created}
+                updated={app.updated}
+              />
+            ))}
         </div>
       </div>
     </div>

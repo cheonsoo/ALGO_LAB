@@ -17,8 +17,8 @@ const StyledContentArea = styled.div`
   // min-height: ${window.screen.availHeight - 300}px;
 
   > div {
-    width: 1200px;
-    max-width: 1200px;
+    /* width: 1200px;
+    max-width: 1200px; */
   }
 `;
 

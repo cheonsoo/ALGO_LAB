@@ -6,18 +6,21 @@
     "paths": {
       "@/*": [ "src/*" ]
     },
-    "target": "es6",
-    "module": "es6",
+    "target": "es5",
+    "module": "es2016",
+    "sourceMap": true,
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "es2015"
     ],
     "allowJs": true,
+    "noImplicitAny": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
