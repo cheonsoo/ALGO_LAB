@@ -1,13 +1,13 @@
 var fs = require('fs');
-var input = fs.readFileSync('input.txt').toString().split('\n');
+var input = fs.readFileSync('/Users/cheonsoo.park/Workspace/chance/_LABS/ALGO_LAB/acmicpc/no_1003/input.txt').toString().split('\n');
 
 function run( val ) {
 
     if ( val <= 1 ) {
         if ( val == 0)
-            c.z++; 
+            c.z++;
         else
-            c.o++; 
+            c.o++;
         return val;
     } else {
         return run( val - 1 ) + run( val - 2 );

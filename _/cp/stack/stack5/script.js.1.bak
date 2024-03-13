@@ -1,0 +1,46 @@
+window.addEventListener('load', function () {
+
+  function Stack(data) {
+    const _stack = data || [];
+
+    Stack.prototype.push = function(val) {
+      _stack.push(val);
+      render();
+    };
+
+    Object.defineProperty(this, 'stack', {
+      get() {
+        return _stack;
+      }
+    });
+  };
+
+  function render() {
+    console.log(state);
+    const lis = listContainer.querySelectorAll('ul > li');
+
+    lis.forEach(li => {
+      const liId = li.dataset.id;
+      if (state.stack.indexOf(liId) > -1) li.innerHTML = liId;
+    });
+  };
+
+  const listContainer = document.querySelector('#stackContainer');
+  let inputValue = '';
+  const state = new Stack([ '1', '3' ]);
+
+  document.querySelector('#input').addEventListener('keyup', evt => {
+    inputValue = evt.target.value;
+    console.log(inputValue);
+  });
+
+  document.querySelector('#push').addEventListener('click', evt => {
+    // console.log(evt.target.value);
+    state.push(evt.target.value);
+  });
+
+
+  (function() {
+    render();
+  })();
+});
