@@ -13,7 +13,7 @@
  */
 const fs = require('fs');
 // const input = fs.readFileSync('/dev/stdin').toString().split('\n');
-const input = fs.readFileSync('/Users/cheonsoo.park/Workspace/chance/_LABS/ALGO_LAB/acmicpc/no_4963/input2.txt').toString().split('\n');
+const input = fs.readFileSync('/Users/cheonsoo.park/Workspace/chance/_LABS/ALGO_LAB/acmicpc/4963/input2.txt').toString().split('\n');
 
 function run() {
   if (input.length === 0 || input[0] === '') return;

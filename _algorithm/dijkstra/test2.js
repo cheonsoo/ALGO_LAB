@@ -1,3 +1,16 @@
+/**
+ * 1. Concept
+ * - dijkstra
+ * - dp
+ *
+ * 2. Time Complexity
+ *
+ * 3. Data Structure
+ * - map<int><int>[][]: 맵
+ * - visited<bool>[]: 방문한 노드
+ * - distance<int>[]: 최단거리
+ *
+ */
 // 노드 간의 거리를 초기화
 const graph = [
   [ Infinity, 1, Infinity, 2, Infinity ],

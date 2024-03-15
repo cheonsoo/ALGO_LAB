@@ -14,7 +14,7 @@
  */
 const fs = require('fs');
 // const input = fs.readFileSync('/dev/stdin').toString().split('\n');
-const input = fs.readFileSync('/Users/cheonsoo.park/Workspace/chance/_LABS/ALGO_LAB/acmicpc/no_4963/input1.txt').toString().split('\n');
+const input = fs.readFileSync('/Users/cheonsoo.park/Workspace/chance/_LABS/ALGO_LAB/acmicpc/4963/input1.txt').toString().split('\n');
 
 function run() {
   if (input.length === 0 || input[0] === '' || input[0] === '0 0') return;
@@ -34,52 +34,46 @@ function run() {
   // 대각선 허용할 때
   const dy = [0, 1, 1, 1, 0, -1, -1, -1];
   const dx = [1, 1, 0, -1, -1, -1, 0, 1];
-  function bfs(y, x) {
-    let areaOfIsland = 0;
-    let queue = [];
+
+  const bfs = (y, x) => {
+    let cnt = 1;
+    const queue = [];
     queue.push([y, x]);
 
     while (queue.length > 0) {
-      const cur = queue.shift();
-      const [cy, cx] = cur;
+      const current = queue.shift();
+      const cy = current[0];
+      const cx = current[1];
 
       for (let i=0; i<8; i++) {
-        const [ny, nx] = [cy + dy[i], cx + dx[i]];
+        const ny = cy + dy[i];
+        const nx = cx + dx[i];
 
-        // 맵을 벗어나는 경우
-        if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
+        if (ny < 0 || nx < 0 || ny >= n || nx >= m) continue;
+        if (visited[ny][nx] || map[ny][nx] === 0) continue;
 
-        // 값이 0이거나 이미 방문한 경우
-        if (map[ny][nx] === 0 || visited[ny][nx] === true) continue;
-
-        // 방문처리
+        cnt++;
         visited[ny][nx] = true;
-        // 섬 개수 증가처리
-        areaOfIsland++;
-        // queue 에 다음 노드 추가
         queue.push([ny, nx]);
       }
     }
 
-    numOfIsland++;
-    return areaOfIsland;
-  }
+    return cnt;
+  };
 
-  let numOfIsland = 0;
+  let numOfArea = 0;
+  const result = [];
   for (let y=0; y<n; y++) {
     for (let x=0; x<m; x++) {
-      if (map[y][x] === 1 && visited[y][x] == false) {
-        // 섬 개수 증가
-        // numOfIsland++;
-        // 방문처리
+      if (!visited[y][x] && map[y][x] === 1) {
+        numOfArea++;
         visited[y][x] = true;
-        // bfs
-        bfs(y, x);
+        result.push(bfs(y, x));
       }
     }
   }
 
-  console.log(numOfIsland);
+  console.log(numOfArea);
   run();
 }
 

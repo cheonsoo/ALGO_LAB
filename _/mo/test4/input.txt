@@ -1,0 +1,12 @@
+arr = [1,1,1,1,1,1,0,0,0,0]
+zerosToOne = 3
+
+case1)
+arr 에 0이 zerosToOne 이상있을 경우
+zerosToOne 만큼 0 삭제, arr 제일 앞에 1 추가
+
+case2)
+배열에 1이 한개이상 있을 경우 제일 마지막 1을 0으로 변경
+
+case3)
+case1, 2 둘다 해당하지 않을 경우 중단
