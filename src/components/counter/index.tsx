@@ -1,10 +1,12 @@
-import React, { FC, useCallback } from "react";
+import React, { FC, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
-import { increase, decrease } from "@/modules/counter";
+import { useDispatch, useSelector } from 'react-redux';
+import { increase, decrease } from '@/modules/counter';
 
 const Counter: FC = () => {
-  const { counter: { number }, } = useSelector((state) => state as any);
+  const {
+    counter: { number }
+  } = useSelector((state) => state as any);
   const dispatch = useDispatch();
   const onClickMinus = useCallback(() => dispatch(decrease()), [dispatch]);
   const onClickPlus = useCallback(() => dispatch(increase()), [dispatch]);
@@ -17,8 +19,10 @@ const Counter: FC = () => {
         <button onClick={onClickPlus}>+</button>
 
         <br />
-        <Link to="/">home</Link><br />
-        <Link to="/counter">counter</Link><br />
+        <Link to="/">home</Link>
+        <br />
+        <Link to="/counter">counter</Link>
+        <br />
         <Link to="/about">about</Link>
       </div>
     </>

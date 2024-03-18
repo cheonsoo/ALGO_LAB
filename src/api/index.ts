@@ -1,5 +1,4 @@
-import axios, { Axios, AxiosInstance, AxiosError, AxiosRequestConfig } from 'axios';
-import { APIResponse, CommonResponse } from '@/api/apps/commonResponse';
+import axios, { AxiosInstance, AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 
 const client: AxiosInstance = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com',
@@ -47,9 +46,10 @@ client.interceptors.response.use(
   }
 );
 
-export const getData = <T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> => {
+export const getData = async <T>(url: string, config?: AxiosRequestConfig): Promise<T> => {
   try {
-    return client.get<AxiosResponse<T>>(url, config).then((response) => response.data);
+    const response = await client.get<T>(url, config);
+    return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(error.message);
@@ -61,27 +61,39 @@ export const getData = <T>(url: string, config?: AxiosRequestConfig): Promise<Ax
 
 export const postData = async <T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> => {
   try {
-    const response = await client.post<APIResponse<T>>(url, data, config);
+    const response = await client.post<AxiosResponse<T>>(url, data, config);
     return response.data;
   } catch (error) {
-    throw new Error(error.message);
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('api returned an error');
+    }
   }
 };
 
 export const putData = async <T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> => {
   try {
-    const response = await client.put<APIResponse<T>>(url, data, config);
+    const response = await client.put<AxiosResponse<T>>(url, data, config);
     return response.data;
   } catch (error) {
-    throw new Error(error.message);
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('api returned an error');
+    }
   }
 };
 
 export const deleteData = async <T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> => {
   try {
-    const response = await client.delete<APIResponse<T>>(url, config);
+    const response = await client.delete<AxiosResponse<T>>(url, config);
     return response.data;
   } catch (error) {
-    throw new Error(error.message);
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('api returned an error');
+    }
   }
 };

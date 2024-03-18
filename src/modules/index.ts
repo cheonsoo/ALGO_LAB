@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   counter,
   accordian,
   posts: postsReducer,
-  apps: appsReducer,
+  apps: appsReducer
 });
 
 export default rootReducer;

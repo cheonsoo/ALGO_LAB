@@ -14,16 +14,6 @@ export type TPost = {
   content: string;
 };
 
-// export type TypePosts = {
-//   [key: string]: {
-//     publish: boolean;
-//     path: string;
-//     desc: string;
-//     title: string;
-//     type: string;
-//   };
-// };
-
 export interface IApps {
   id: string;
   publish: boolean;
@@ -43,13 +33,13 @@ export interface IApps2 {
 export interface IApp {
   id: string;
   publish: boolean;
-  path: string;
-  type: string;
-  title: string;
-  desc: string;
-  thumbnail: string;
-  created: string;
-  updated: string;
+  path?: string;
+  type?: string;
+  title?: string;
+  desc?: string;
+  thumbnail?: string;
+  created?: string;
+  updated?: string;
 }
 
 export interface IPost extends IApp {}

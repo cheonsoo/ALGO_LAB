@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -32,7 +32,17 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   })
 }));
 
-export default function CardSimple(props: IApp) {
+interface CardSimpleProps {
+  id: string;
+  type: string;
+  title: string;
+  desc: string;
+  thumbnail: string;
+  created: string;
+  updated: string;
+}
+
+export default function CardSimple(props: CardSimpleProps) {
   const {
     accordian: { opened }
   } = useSelector((state) => state as any);

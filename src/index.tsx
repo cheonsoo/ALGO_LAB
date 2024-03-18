@@ -1,9 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import store from '@/modules/store';
 // @ts-ignore
-import * as Sentry from '@sentry/react';
+// import * as Sentry from '@sentry/react';
+// import './sentry';
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import App from '@/App';
 
@@ -12,25 +16,16 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-Sentry.init({
-  dsn: "https://6459422c27f74e1e888875acaf6027af@o4505543250804736.ingest.sentry.io/4505543301464064",
-  integrations: [
-    new Sentry.BrowserTracing({
-      // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
-      tracePropagationTargets: ["localhost", "http://blog.devnology.co.kr"],
-    }),
-    new Sentry.Replay(),
-  ],
-  // Performance Monitoring
-  tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
-  // Session Replay
-  replaysSessionSampleRate: 0.1, // This sets the sample rate at 10%. You may want to change it to 100% while in development and then sample at a lower rate in production.
-  replaysOnErrorSampleRate: 1.0, // If you're not already sampling the entire session, change the sample rate to 100% when sampling sessions where errors occur.
-});
+const queryClient = new QueryClient();
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(
+  // <React.StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <Provider store={store}>
+      <App />
+      <ReactQueryDevtools initialIsOpen={true} />
+    </Provider>
+  </QueryClientProvider>
+  // </React.StrictMode>
 );

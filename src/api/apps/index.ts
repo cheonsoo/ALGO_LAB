@@ -1,16 +1,14 @@
-import { IApps } from '@/types';
-import { CommonResponse } from './commonResponse';
+import { IApp } from '@/types';
 import { getData } from '@/api';
 
-export const getAppConfigs = async (): Promise<IApps[]> => {
+export const getAppConfigs = async () => {
   const url: string = `${process.env.REACT_APP_S3_BUCKET_STATIC}/files/config/apps.json`;
-  const response: CommonResponse<IApps[]> = await getData(url);
-  console.log(response);
-  return response;
+  const data = await getData<IApp[]>(url);
+  return data || [];
 };
 
-// export const getAppConfigs = async (): Promise<IApps[]> => {
-//   const url = `${process.env.REACT_APP_S3_BUCKET_STATIC}/files/config/apps.json?`;
-//   const response: CommonResponse = await axios.get(url);
-//   return response.data;
-// };
+export const fetchAppData = async (id: string) => {
+  const apps = await getAppConfigs();
+  const app = apps.find((app) => app.id === id);
+  return app || ({} as IApp);
+};

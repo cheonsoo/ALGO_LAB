@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // const Home = React.lazy(() => import('@/pages/home'));
-const Dashboard = React.lazy(() => import('@/pages/dashboard'));
+const Dashboard = React.lazy(() => import('@/pages/dashboard/Dashboard'));
 const Apps = React.lazy(() => import('@/pages/apps'));
 const App = React.lazy(() => import('@/pages/apps/app'));
 const Posts = React.lazy(() => import('@/pages/posts'));

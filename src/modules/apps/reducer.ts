@@ -1,11 +1,7 @@
 import { getApps } from '@/modules/apps/action';
-import { TYPE_GET_APPS } from '@/modules/apps/types';
+import { TYPE_GET_APPS, IInitialState } from '@/modules/apps/types';
 
-interface InitialState {
-  list: object;
-}
-
-const initialState: InitialState = {
+const initialState: IInitialState = {
   list: []
 };
 

@@ -1,34 +1,47 @@
-import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import styled from 'styled-components';
-import { useSelector } from 'react-redux';
-import { isEmpty } from 'lodash';
-import { getAppConfigs } from '@/api/apps';
-import { IApp } from '@/types';
-import { RootState } from '@/modules';
+import { useQueryClient } from '@tanstack/react-query';
+import { getAppConfigs, fetchAppData } from '@/api/apps';
+
 import { SIFrame, SDiv } from './styled';
+import { useAppInfoQuery } from '@/hooks/useAppData';
+import StyledLoadingDiv from '@/components/styled/StyledLoadingDiv';
+import StyledErrorDiv from '@/components/styled/StyledErrorDiv';
+import { useEffect } from 'react';
 
 const App = () => {
-  const [appInfo, setAppInfo] = useState({});
-
-  const apps: IApp[] = useSelector((state: RootState) => state.apps.list);
-
   const params = useParams();
 
-  useEffect(() => {
-    console.log('### id', params.id);
+  const { data: appInfo, isLoading, isError } = useAppInfoQuery(params.id || '');
 
-    if (isEmpty(apps)) {
-      getAppConfigs()
-        .then((data: IApp[]) => data.find((app) => app.id === params.id))
-        .then((data: IApp) => setAppInfo(data));
-    } else {
-      const app = apps.find((app) => app.id === params.id);
-      setAppInfo(app);
+  const queryClient = useQueryClient();
+
+  const test1 = async () => {
+    try {
+      const tmp = queryClient.getQueryData(['app-data']);
+      console.log(`tmp: ${tmp}`);
+
+      const data = await queryClient.fetchQuery({ queryKey: ['app-data'], queryFn: getAppConfigs });
+      console.log(`data: ${JSON.stringify(data)}`);
+    } catch (error) {
+      console.log(error);
     }
+  };
+
+  useEffect(() => {
+    console.log(`tmp222`);
+
+    test1();
   }, []);
 
-  return <SDiv>{<SIFrame src={appInfo.path}></SIFrame>}</SDiv>;
+  if (isLoading) {
+    return <StyledLoadingDiv>Fetching [{params.id}] App Info ...</StyledLoadingDiv>;
+  }
+
+  if (isError) {
+    return <StyledErrorDiv>Error ......</StyledErrorDiv>;
+  }
+
+  return <SDiv>{appInfo && <SIFrame src={appInfo.path}></SIFrame>}</SDiv>;
 };
 
 export default App;

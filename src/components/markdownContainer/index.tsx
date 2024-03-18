@@ -11,9 +11,9 @@ import MarkDownBlockQuote from './markdownBlockQuote';
 import NoPost from './noPost';
 
 // @ts-ignore
-import rehypeRaw from "rehype-raw";
+import rehypeRaw from 'rehype-raw';
 // @ts-ignore
-import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
+import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
 
 import './style.scss';
 interface IPost {
@@ -26,7 +26,6 @@ const MarkdownContainer: React.FC<IPost> = ({ content = '' }) => {
       <div>
         {content ? (
           <ReactMarkdown
-            allowDangerousHtml={true}
             components={{
               code: MarkDownCodeBlock,
               img: MarkDownImage,
@@ -34,7 +33,7 @@ const MarkdownContainer: React.FC<IPost> = ({ content = '' }) => {
               h2: MarkDownH2,
               blockquote: MarkDownBlockQuote,
               p: ({ node, ...props }) => <span {...props} style={{ margin: '10px', display: 'block' }}></span>,
-              table: ({ node, ...props }) => <table className="markdown-table" {...props}></table>,
+              table: ({ node, ...props }) => <table className="markdown-table" {...props}></table>
               // blockquote: ({ node, ...props }) => <div style={{ color: 'red' }} {...props}></div>,
               // h2: ({ node, ...props }) => <div style={{ color: 'red' }} {...props}></div>,
             }}
@@ -45,9 +44,9 @@ const MarkdownContainer: React.FC<IPost> = ({ content = '' }) => {
                 ...defaultSchema,
                 attributes: {
                   ...defaultSchema.attributes,
-                  iframe: [...(defaultSchema.attributes.iframe || [])],
-                },
-              }),
+                  iframe: [...(defaultSchema.attributes.iframe || [])]
+                }
+              })
             ]}
           >
             {content}

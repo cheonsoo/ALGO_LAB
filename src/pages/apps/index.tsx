@@ -5,6 +5,8 @@ import { getApps } from '@/modules/apps/action';
 import { RootState } from '@/modules';
 import { IApp } from '@/types';
 
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
+
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
@@ -14,6 +16,8 @@ import Paper from '@mui/material/Paper';
 
 import { StyledListContainer, StyledTableRow, StyledTableCell } from './ListContainer';
 
+import { getAppConfigs } from '@/api/apps';
+
 const Apps = () => {
   const apps: IApp[] = useSelector((state: RootState) => state.apps.list);
 
@@ -21,6 +25,29 @@ const Apps = () => {
 
   const dispatch = useDispatch();
   const getAppsData = useCallback(() => dispatch(getApps()), [dispatch]);
+
+  const getAppDataRQ = async () => {
+    const data = await getAppConfigs();
+    console.log('### getAppDataRQ ', data);
+    return data;
+  };
+
+  // const {
+  //   data: appData,
+  //   isPending,
+  //   error
+  // } = useQuery({
+  //   queryKey: [''],
+  //   queryFn: getAppDataRQ
+  // });
+
+  // if (isPending) {
+  //   return 'Loading ...';
+  // }
+
+  // if (error) {
+  //   return 'Error ...';
+  // }
 
   useEffect(() => {
     if (apps.length === 0) {

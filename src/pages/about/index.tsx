@@ -1,8 +1,10 @@
-import * as React from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import MarkdownContainer from '@/components/markdownContainer';
 import NoPost from '@/components/markdownContainer/noPost';
+
+import Test1 from '@/components/test/Test1';
 
 const StyledPostContainer = styled.div`
   height: 100%;
@@ -10,15 +12,15 @@ const StyledPostContainer = styled.div`
 `;
 
 const About = () => {
-  const [content, setContent] = React.useState('');
+  const [content, setContent] = useState('');
 
   try {
-    throw new Error("### Manually Produced Error ###");
+    throw new Error('### Manually Produced Error ###');
   } catch (e) {
     console.debug(e.message);
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     getPost();
   }, []);
 
@@ -46,10 +48,13 @@ const About = () => {
     }
   };
 
-  return <div className="aboutContainer">
-    <StyledPostContainer>{content ? <MarkdownContainer content={content} /> : <NoPost />}</StyledPostContainer>
-    <div onClick={fnTest}>.</div>
-  </div>;
+  return (
+    <div className="aboutContainer">
+      <Test1 />
+      <StyledPostContainer>{content ? <MarkdownContainer content={content} /> : <NoPost />}</StyledPostContainer>
+      <div onClick={fnTest}>.</div>
+    </div>
+  );
 };
 
 export default About;

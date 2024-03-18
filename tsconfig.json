@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
     "outDir": "./dist/",
     "baseUrl": ".",
     "paths": {
+      "@": [ "src" ],
       "@/*": [ "src/*" ]
     },
     "target": "es5",
-    "module": "ESNext",
+    "module": "esnext",
+    "moduleResolution": "node",
     "sourceMap": true,
     "lib": [
       "dom",
@@ -26,9 +27,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react",
-    "declaration": true
+    "jsx": "react-jsx",
+    "declaration": true,
+    "types": [ "react" ]
   },
-  "include": [ "src", "types" ],
+  "include": [ "src", "src/**/*.ts", "src/**/*.tsx", "**/*.tsx", "types" ],
   "exclude": [ "./node_modules/**/*" ]
 }
