@@ -1,8 +1,8 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getApps } from '@/modules/apps/action';
-import { RootState } from '@/modules';
+import { getApps } from '@/store/modules/apps/action';
+import { RootState } from '@/store/modules';
 import { IApp } from '@/types';
 
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';

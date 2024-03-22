@@ -2,8 +2,8 @@ import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { getPostsActionImpl } from '@/modules/posts/action';
-import { RootState } from '@/modules';
+import { getPostsActionImpl } from '@/store/modules/posts/action';
+import { RootState } from '@/store/modules';
 import { TPost } from '@/types';
 
 import Table from '@mui/material/Table';

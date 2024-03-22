@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import store from '@/modules/store';
+import store from '@/store/modules/store';
 // @ts-ignore
 // import * as Sentry from '@sentry/react';
 // import './sentry';

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import moment from 'moment';
+import { MENU } from '@/common/constants';
 
 const StyledDiv = styled.div`
   height: 50px;
@@ -44,18 +45,6 @@ const StyledUl = styled.ul`
   }
 `;
 
-const menus = [
-  { path: '/', label: 'devnology' },
-  // { path: '/posts', label: 'posts' },
-  // { path: '/apps', label: 'apps' },
-  // { path: '/experiments', label: 'experiments' },
-  { path: '/about', label: 'about' }
-  // { path: '/zoomimagescroll', label: 'zoomimagescroll' },
-  // { path: '/scrollbyscreen', label: 'scrollbyscreen' },
-  // { path: '/timeline', label: 'timeline' }
-  // { path: '/test', label: 'test' }
-];
-
 const SubHeader: React.FC = () => {
   useEffect(() => {
     console.log(moment().format('YYYY-MM-DD HH:MM:SS'));
@@ -64,11 +53,11 @@ const SubHeader: React.FC = () => {
   return (
     <StyledDiv>
       <StyledUl>
-        {menus.map((item, idx) => (
+        {MENU.map((item, idx) => (
           <li key={idx}>
             <Link to={item.path}>
               {item.label.toUpperCase()}
-              {idx < menus.length - 1 ? ' | ' : ''}
+              {idx < MENU.length - 1 ? ' | ' : ''}
             </Link>
           </li>
         ))}

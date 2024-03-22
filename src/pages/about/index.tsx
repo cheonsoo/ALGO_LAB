@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import MarkdownContainer from '@/components/markdownContainer';
 import NoPost from '@/components/markdownContainer/noPost';
 
-import Test1 from '@/components/test/Test1';
+import Test1 from '@/components/common/test/Test1';
 
 const StyledPostContainer = styled.div`
   height: 100%;

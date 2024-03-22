@@ -4,9 +4,9 @@ import { useQuery, useQueryClient, QueryClient } from '@tanstack/react-query';
 import { getAppConfigs, fetchAppData } from '@/api/apps';
 
 import { SIFrame, SDiv } from './styled';
-import { useAppInfoQuery } from '@/hooks/useAppData';
-import StyledLoadingDiv from '@/components/styled/StyledLoadingDiv';
-import StyledErrorDiv from '@/components/styled/StyledErrorDiv';
+import { useAppInfoQuery } from '@/store/queries/useAppData';
+import StyledLoadingDiv from '@/components/common/styled/StyledLoadingDiv';
+import StyledErrorDiv from '@/components/common/styled/StyledErrorDiv';
 import { useEffect } from 'react';
 import { IApp } from '@/types';
 

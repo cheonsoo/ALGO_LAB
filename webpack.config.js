@@ -98,12 +98,12 @@ module.exports = (env, options) => {
       new MiniCssExtractPlugin({
         filename: 'assets/css/[name].[chunkhash].css'
       }),
-      new CopyWebpackPlugin({
-        patterns: [
-          { from: 'src/static/pages', to: 'pages', globOptions: { dot: true, ignore: ['**/*.bak'] } },
-          { from: 'src/static/posts', to: 'posts', globOptions: { dot: true, ignore: ['**/*.bak'] } }
-        ]
-      }),
+      // new CopyWebpackPlugin({
+      //   patterns: [
+      //     { from: 'src/static/pages', to: 'pages', globOptions: { dot: true, ignore: ['**/*.bak'] } },
+      //     { from: 'src/static/posts', to: 'posts', globOptions: { dot: true, ignore: ['**/*.bak'] } }
+      //   ]
+      // }),
       new webpack.DefinePlugin({
         'process.env': JSON.stringify(process.env)
       }),

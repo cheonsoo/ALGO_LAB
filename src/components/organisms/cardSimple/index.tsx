@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { toggleArcordian } from '@/modules/home';
+import { toggleArcordian } from '@/store/modules/home';
 import { IApp } from '@/types';
 
 import { styled } from '@mui/material/styles';

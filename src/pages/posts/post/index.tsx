@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
-import { getPostsActionImpl } from '@/modules/posts/action';
+import { getPostsActionImpl } from '@/store/modules/posts/action';
 import { getPost } from '@/api/posts';
 import { isEmpty } from 'lodash';
 
