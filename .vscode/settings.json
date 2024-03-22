@@ -10,5 +10,11 @@
     "editor.wordHighlightBackground": "#87867fa9",
     "editorCursor.foreground": "#eeedd2a9",
     "tab.activeBackground": "#00ff0075"
-  }
+  },
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  },
+  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
