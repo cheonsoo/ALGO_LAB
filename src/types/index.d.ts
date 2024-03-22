@@ -33,7 +33,7 @@ export interface IApps2 {
 export interface IApp {
   id: string;
   publish: boolean;
-  path?: string;
+  path: string;
   type?: string;
   title?: string;
   desc?: string;

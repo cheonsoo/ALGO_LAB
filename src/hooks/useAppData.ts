@@ -4,7 +4,7 @@ import { IApp } from '@/types';
 
 export const useAppListQuery = () => {
   const appList = useQuery({
-    queryKey: ['app-data', { cacheTime: 3000 }],
+    queryKey: ['app-data', { cacheTime: 1000 * 60 * 24 }],
     queryFn: getAppConfigs
   });
 

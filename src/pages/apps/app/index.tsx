@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useQueryClient } from '@tanstack/react-query';
+import { useQuery, useQueryClient, QueryClient } from '@tanstack/react-query';
 import { getAppConfigs, fetchAppData } from '@/api/apps';
 
 import { SIFrame, SDiv } from './styled';
@@ -7,31 +8,13 @@ import { useAppInfoQuery } from '@/hooks/useAppData';
 import StyledLoadingDiv from '@/components/styled/StyledLoadingDiv';
 import StyledErrorDiv from '@/components/styled/StyledErrorDiv';
 import { useEffect } from 'react';
+import { IApp } from '@/types';
 
 const App = () => {
   const params = useParams();
 
+  // const [appInfo, setAppInfo] = useState<IApp>({ id: '', publish: false, path: '' });
   const { data: appInfo, isLoading, isError } = useAppInfoQuery(params.id || '');
-
-  const queryClient = useQueryClient();
-
-  const test1 = async () => {
-    try {
-      const tmp = queryClient.getQueryData(['app-data']);
-      console.log(`tmp: ${tmp}`);
-
-      const data = await queryClient.fetchQuery({ queryKey: ['app-data'], queryFn: getAppConfigs });
-      console.log(`data: ${JSON.stringify(data)}`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    console.log(`tmp222`);
-
-    test1();
-  }, []);
 
   if (isLoading) {
     return <StyledLoadingDiv>Fetching [{params.id}] App Info ...</StyledLoadingDiv>;
