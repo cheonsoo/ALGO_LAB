@@ -7,11 +7,11 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Algo Lap Launch Program",
+      "name": "js debug",
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/../ALGO_LAB/acmicpc/no_2178/test1.js"
+      "program": "${file}"
     }
   ]
 }

@@ -16,53 +16,47 @@
  *
  */
 const fs = require('fs');
-const input = fs.readFileSync('/Users/cheonsoo.park/Workspace/chance/_LABS/ALGO_LAB/acmicpc/2667/input1.txt').toString().split('\n');
+const input = fs.readFileSync('/Users/chance/Workspace/chance/ALGO_LAB/acmicpc/2667/input1.txt').toString().split('\n');
 
-let line = input.shift();
-const mapSize = parseInt(line);
-const map = [...Array(mapSize)].map(() => input.shift().split('').map(n => parseInt(n)));
-const visited = [...Array(mapSize)].map(() => Array(mapSize).fill(false));
+const m = parseInt(input.shift());
+const map = [...Array(m)].map(() => input.shift().split('').map(s => parseInt(s)));
+const visited = [...Array(m)].map(() => Array(m).fill(false));
 
 const dy = [0, 1, 0, -1];
 const dx = [1, 0, -1, 0];
-function bfs(y, x) {
-  let aptCnt = 1;
-  let queue = [];
+
+const bfs = (y, x) => {
+  let cnt = 1;
+  const queue = [];
   queue.push([y, x]);
 
-  while(queue.length > 0) {
-    let cur = queue.shift();
-    let cy = cur[0];
-    let cx = cur[1]
+  while (queue.length > 0) {
+    const [cy, cx] = queue.shift();
 
     for (let i=0; i<4; i++) {
-      let ny = cy + dy[i];
-      let nx = cx + dx[i];
+      const [ny, nx] = [cy + dy[i], cx + dx[i]];
 
-      if (ny < 0 || ny >= mapSize || nx < 0 || nx >= mapSize) continue;
+      if (ny < 0 || ny >= m || nx < 0 || nx >= m) continue;
+      if (visited[ny][nx] || map[ny][nx] === 0) continue;
 
-      if (map[ny][nx] === 0 || visited[ny][nx] === true) continue;
-
+      cnt++;
       visited[ny][nx] = true;
-      aptCnt++;
       queue.push([ny, nx]);
     }
   }
 
-  return aptCnt;
-}
+  return cnt;
+};
 
 const result = [];
-let areaCnt = 0;
-for (let n=0; n<mapSize; n++) {
-  for (let m=0; m<mapSize; m++) {
-    if (map[n][m] === 1 && visited[n][m] === false) {
-      areaCnt++;
-      visited[n][m] = true;
-      result.push(bfs(n, m));
+for (let y=0; y<m; y++) {
+  for (let x=0; x<m; x++) {
+    if (!visited[y][x] && map[y][x] === 1) {
+      visited[y][x] = true;
+      result.push(bfs(y, x));
     }
   }
 }
 
-console.log(areaCnt);
-result.sort((a, b) => (a - b)).forEach(n => console.log(n));
+console.log(result.length);
+console.log(result.join(' '));
