@@ -1,5 +1,5 @@
 const fs = require('fs');
-const input = fs.readFileSync('/Users/cheonsoo.park/Workspace/chance/_LABS/ALGO_LAB/_algorithm/bfs/2667/input1.txt').toString().split('\n');
+const input = fs.readFileSync('/Users/chance/Workspace/chance/ALGO_LAB/_algorithm/bfs/2667/input1.txt').toString().split('\n');
 
 const m = parseInt(input.shift());
 const map = [...Array(m)].map(() => input.shift().split('').map(s => parseInt(s)));
