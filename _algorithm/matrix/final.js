@@ -54,7 +54,7 @@ function initNumberSet(N) {
   return numberSet;
 }
 
-function solution(N) {
+function solution(N, r, c) {
   let map = initMap(N);
 
   let numberSet = initNumberSet(N);
@@ -85,6 +85,9 @@ function solution(N) {
   for (let i = 0; i < map.length; i++) {
     console.log(JSON.stringify(map[i]));
   }
+
+  console.log(map[r-1][c-1]);
 }
 
-solution(5);
+// solution(5, 3, 2);
+solution(6, 5, 4);

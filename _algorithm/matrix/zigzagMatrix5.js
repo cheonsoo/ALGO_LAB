@@ -66,7 +66,7 @@ function solution(n, r, c) {
   return map[r - 1][c - 1]; // return value in [r, c]
 }
 
-const result = solution(5, 3, 2); // 9
+// const result = solution(5, 3, 2); // 9
 // const result = solution(6, 5, 4); // 29
+console.log(solution(11, 8, 9));
 
-console.log(result);

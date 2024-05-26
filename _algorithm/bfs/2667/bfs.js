@@ -20,7 +20,12 @@ const input = fs.readFileSync('/dev/stdin').toString().split('\n');
 
 let line = input.shift();
 const mapSize = parseInt(line);
-const map = [...Array(mapSize)].map(() => input.shift().split('').map(n => parseInt(n)));
+const map = [...Array(mapSize)].map(() =>
+  input
+    .shift()
+    .split('')
+    .map((n) => parseInt(n))
+);
 const visited = [...Array(mapSize)].map(() => Array(mapSize).fill(false));
 
 const dy = [0, 1, 0, -1];
@@ -30,12 +35,12 @@ function bfs(y, x) {
   let queue = [];
   queue.push([y, x]);
 
-  while(queue.length > 0) {
+  while (queue.length > 0) {
     let cur = queue.shift();
     let cy = cur[0];
-    let cx = cur[1]
+    let cx = cur[1];
 
-    for (let i=0; i<4; i++) {
+    for (let i = 0; i < 4; i++) {
       let ny = cy + dy[i];
       let nx = cx + dx[i];
 
@@ -54,8 +59,8 @@ function bfs(y, x) {
 
 const result = [];
 let areaCnt = 0;
-for (let n=0; n<mapSize; n++) {
-  for (let m=0; m<mapSize; m++) {
+for (let n = 0; n < mapSize; n++) {
+  for (let m = 0; m < mapSize; m++) {
     if (map[n][m] === 1 && visited[n][m] === false) {
       areaCnt++;
       visited[n][m] = true;
@@ -65,4 +70,4 @@ for (let n=0; n<mapSize; n++) {
 }
 
 console.log(areaCnt);
-result.sort((a, b) => (a - b)).forEach(n => console.log(n));
+result.sort((a, b) => a - b).forEach((n) => console.log(n));

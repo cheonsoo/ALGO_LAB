@@ -73,6 +73,7 @@ function solution(N, X, Y) {
 }
 
 // solution(5, 3, 2); // 9
-solution(10, 4, 5); // 29
+// solution(10, 4, 5); // 29
+solution(6, 5, 4); // 29
 
 console.log(`### exe time: ${new Date().getTime() - start}`);
