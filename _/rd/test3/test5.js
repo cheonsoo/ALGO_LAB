@@ -24,7 +24,7 @@ function solution(n, r, c) {
   let y = -1;
   let direction = ''; // directions to go up or down
   let cnt = 1; // starter
-  let total = n * n; // total number of 2 dimension arrays
+  let total = n * n; // total number of 2 d imension arrays
 
   // terminate loop if cnt meets total
   while (cnt <= total) {
