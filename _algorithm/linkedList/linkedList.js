@@ -1,11 +1,11 @@
 function ListNode(val, next) {
-  this.val = (val === undefined ? 0 : val);
-  this.next = (next === undefined ? null : next);
+  this.val = val === undefined ? 0 : val;
+  this.next = next === undefined ? null : next;
 }
 
-ListNode.prototype.size = function() {
+ListNode.prototype.size = function () {
   let val = this.val;
-  let next = this.next;;
+  let next = this.next;
   let cnt = 0;
   while (next) {
     val = next.val;
@@ -13,15 +13,14 @@ ListNode.prototype.size = function() {
     cnt++;
   }
   return cnt + 1;
-}
+};
 
-ListNode.prototype.pop = function() {
+ListNode.prototype.pop = function () {
   const head = this;
-  if (head == null)
-      return null;
+  if (head == null) return null;
 
   if (head.next == null) {
-      return null;
+    return null;
   }
 
   // Find the second last node
@@ -36,9 +35,9 @@ ListNode.prototype.pop = function() {
   second_last.next = null;
 
   return lastVal;
-}
+};
 
-ListNode.prototype.unshift = function(val) {
+ListNode.prototype.unshift = function (val) {
   const newNode = new ListNode();
   newNode.val = this.val;
   newNode.next = this.next;
@@ -47,9 +46,26 @@ ListNode.prototype.unshift = function(val) {
   this.next = newNode;
 };
 
-ListNode.prototype.toArray = function() {
-  if (!this.next)
-    return [this.val];
+ListNode.prototype.remove = function (val) {
+  if (this.val === val) {
+    this.val = this.next.val;
+    this.next = this.next.next;
+  }
+
+  let current = this;
+  while (current.next) {
+    if (current.val === val) {
+      current.val = current.next.val;
+      current.next = current.next.next;
+      break;
+    }
+
+    current = current.next;
+  }
+};
+
+ListNode.prototype.toArray = function () {
+  if (!this.next) return [this.val];
 
   let current = this.next;
   let arr = [this.val];
@@ -58,32 +74,44 @@ ListNode.prototype.toArray = function() {
     current = current.next;
   }
   return arr;
-}
+};
+
+ListNode.prototype.print = function () {
+  let current = this;
+  let idx = 0;
+  while (current) {
+    console.log(`[${idx}] ${current.val}`);
+    idx++;
+    current = current.next;
+  }
+};
 
 const convertArrayToList = (arr) => {
   let node;
-  for (let i=arr.length-1; i>=0; i--) {
-    if (!node)
-      node = new ListNode(arr[i], null);
-    else
-      node = new ListNode(arr[i], node);
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (!node) node = new ListNode(arr[i], null);
+    else node = new ListNode(arr[i], node);
   }
   return node;
 };
 
 ////////////////////////////// Test Code //////////////////////////////
 
-const head = new ListNode(0, null);
-head.unshift(5);
-head.unshift(4);
-head.unshift(3);
-head.unshift(2);
-head.unshift(1);
-console.log(`list: ${head.toArray()}`);
-console.log(`size: ${head.size()}`);
-console.log(`pop: ${head.pop()}`);
-console.log(`list: ${head.toArray()}`);
-console.log(`size: ${head.size()}`);
+const list = new ListNode(0, null);
+list.unshift(5);
+list.unshift(4);
+list.unshift(3);
+list.unshift(2);
+list.unshift(1);
+console.log(`list: ${list.toArray()}`);
+console.log(`size: ${list.size()}`);
+console.log(`pop: ${list.pop()}`);
+console.log(`list: ${list.toArray()}`);
+console.log(`size: ${list.size()}`);
+console.log(`remove`);
+list.remove(3);
+list.print();
+
 //------------------------------------------------------
 
 // Start with the empty list /
@@ -103,8 +131,6 @@ console.log(`size: ${head.size()}`);
 
 // This code contributed by Rajput-Ji
 
-
-
 //----------------------
 // const l = convertArrayToList([1,2,3,4]);
 // console.log(`size: ${l.size()}`);
@@ -117,4 +143,3 @@ console.log(`size: ${head.size()}`);
 // console.log(push(l, 123));
 // l.unshift(123);
 // console.log(convertListToArray(l));
-
